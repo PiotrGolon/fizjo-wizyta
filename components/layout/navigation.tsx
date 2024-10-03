@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { routes } from "@/assets/constants";
 
 import { useMedia } from "react-use";
 
@@ -16,13 +17,6 @@ const Navigation = () => {
   const router = useRouter();
   const pathname = usePathname();
   const isMobile = useMedia("(max-width: 1024px)", false);
-
-  const routes = [
-    { href: "/", label: "Strona główna" },
-    { href: "/wolne-wizyty", label: "Umów wizytę" },
-    { href: "/cennik", label: "Cennik" },
-    { href: "/o-mnie", label: "O mnie" },
-  ];
 
   const onClick = (href: string) => {
     router.push(href);
