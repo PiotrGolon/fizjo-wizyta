@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Billboard = () => {
   return (
@@ -21,12 +22,16 @@ const Billboard = () => {
           Twoją rehabilitację. Zaufaj mojemu doświadczeniu, aby szybko wrócić do
           pełnej sprawności i cieszyć się życiem bez bólu!
         </p>
-        <Button
-          variant="signIn"
-          className="w-full lg:max-w-[220px] mt-4 rounded-full"
-        >
-          Umów wizytę już teraz!
-        </Button>
+
+        <Link href="/wolne-wizyty">
+          <Button
+            size="lg"
+            variant="signIn"
+            className="w-full lg:max-w-[220px] mt-4 rounded-full"
+          >
+            Umów wizytę już teraz!
+          </Button>
+        </Link>
       </div>
       <div className="flex  justify-center">
         <Image

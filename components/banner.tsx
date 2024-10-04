@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -12,13 +13,15 @@ const Banner = () => {
             Z zaufanym specjalistą, w twoim mieście!
           </p>
         </div>
-        <Button
-          variant="signIn"
-          size="lg"
-          className="w-full lg:w-auto mb-4 mt-8 lg:mt-16 rounded-full"
-        >
-          Sprawdź wolne terminy!
-        </Button>
+        <Link href="/wolne-wizyty">
+          <Button
+            variant="signIn"
+            size="lg"
+            className="w-full lg:w-auto mb-4 mt-8 lg:mt-16 rounded-full"
+          >
+            Sprawdź wolne terminy!
+          </Button>
+        </Link>
       </div>
 
       {/* ---- Right Side ------ */}
