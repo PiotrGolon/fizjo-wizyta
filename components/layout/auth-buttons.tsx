@@ -1,13 +1,23 @@
 "use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useAuth, UserButton } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, useAuth, UserButton } from "@clerk/nextjs";
+import { Loader2 } from "lucide-react";
 
 const AuthButtons = () => {
   const { sessionId } = useAuth();
 
   if (sessionId) {
-    return <UserButton />;
+    return (
+      <>
+        <ClerkLoaded>
+          <UserButton />
+        </ClerkLoaded>
+        <ClerkLoading>
+          <Loader2 className="animate-spin text-muted-foreground" />
+        </ClerkLoading>
+      </>
+    );
   }
 
   return (
