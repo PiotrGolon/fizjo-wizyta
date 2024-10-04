@@ -14,7 +14,6 @@ export default function Home() {
         altText="gabinet zdjęcie"
         title="Profesjonalna rehabilitacja"
         description="Oferujemy kompleksowe programy rehabilitacyjne dostosowane do Twoich potrzeb."
-        reverse={false}
       />
       <AnimatedSectionContrast
         imageSrc="/images/tomasz-deput-gabinet-2.webp"

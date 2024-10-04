@@ -3,4 +3,5 @@ export const routes = [
   { href: "/wolne-wizyty", label: "Umów wizytę" },
   { href: "/cennik", label: "Cennik" },
   { href: "/o-mnie", label: "O mnie" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
