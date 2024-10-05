@@ -30,7 +30,7 @@ const MapComponent: React.FC<MapProps> = ({ latitude, longitude }) => {
 
   return (
     <div className="my-5 flex flex-col justify-center items-center ">
-      <h2 className="text-center text-lg font-bold text-green-500 mb-4 flex items-center">
+      <h2 className="text-center text-2xl font-bold text-green-500 mb-4 flex items-center">
         Znajdź mnie na mapie <CircleArrowDown className="size-6 ml-2" />
       </h2>
       <MapContainer

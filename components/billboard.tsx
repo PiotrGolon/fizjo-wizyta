@@ -7,7 +7,7 @@ const Billboard = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 shadow-2xl  rounded-xl overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-400 to-green-500 h-auto px-2 lg:px-10 mb-16">
       <div className="flex flex-col px-4 py-4 gap-y-6 my-auto">
         <h1 className="text-white text-4xl font-extrabold drop-shadow-lg">
-          Fizjoteraputa Pruszków?
+          Fizjoterapeuta Pruszków?
         </h1>
         <h2 className="text-blue-800 text-3xl font-bold drop-shadow-lg">
           Profesjonalna pomoc jest na wyciągnięcie ręki!

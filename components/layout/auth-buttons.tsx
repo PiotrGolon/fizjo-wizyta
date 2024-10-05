@@ -2,22 +2,16 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ClerkLoaded, ClerkLoading, useAuth, UserButton } from "@clerk/nextjs";
-import { Loader2, LogIn } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import BackButton from "./back-button";
 
 const AuthButtons = () => {
   const { sessionId } = useAuth();
 
   if (sessionId) {
     return (
-      <div className="flex items-center">
-        <Link href={"/dashboard"}>
-          <Button
-            variant="ghost"
-            className="mr-2 w-full  lg:w-auto justify-between font-semibold text-green-600 hover:bg-green-400/20 hover:text-green-800 transition duration-300"
-          >
-            Panel użytkownika <LogIn className="size-5" />
-          </Button>
-        </Link>
+      <div className="flex items-center gap-x-2">
+        <BackButton href="/dashboard" />
         <ClerkLoaded>
           <UserButton />
         </ClerkLoaded>

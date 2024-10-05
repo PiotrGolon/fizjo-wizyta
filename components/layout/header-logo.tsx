@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const HeaderLogo = () => {
+interface HeaderLogoProps {
+  href: string;
+}
+
+const HeaderLogo = ({ href }: HeaderLogoProps) => {
   return (
-    <Link href="/">
+    <Link href={href}>
       <div className="hidden lg:flex items-center ml-2 lg:ml-0 ">
         <Image
           width={60}

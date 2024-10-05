@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface AnimatedSectionProps {
   imageSrc: string;
   altText: string;
@@ -15,4 +17,10 @@ export interface AnimatedSectionIconProps {
   openingHours?: string;
   preferations?: string;
   reverse?: boolean;
+}
+
+export interface SidebarItemsProps {
+  href: string;
+  icon: LucideIcon;
+  label: string;
 }

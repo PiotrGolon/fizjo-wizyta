@@ -1,5 +1,6 @@
 import AnimatedSectionIcon from "@/components/animated-section-icon";
 import AnimatedSectionIconContrast from "@/components/animated-section-icon-contrast";
+import ContactSection from "@/components/contact-section";
 import dynamic from "next/dynamic";
 
 // import MapComponent from "@/components/map-location-component";
@@ -29,6 +30,7 @@ const ContactPage = () => {
         preferations="Preferowany kontakt SMS"
       />
       <DynamicMap latitude={52.1621091} longitude={20.8222591} />
+      <ContactSection />
     </div>
   );
 };
