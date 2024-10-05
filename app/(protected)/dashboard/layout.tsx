@@ -9,16 +9,18 @@ interface CustomLayoutProps {
 
 const CustomLayout: React.FC<CustomLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col max-w-screen-xl mx-auto">
-      <ProtectedNavbar />
-      <hr className="mt-2" />
-      <div className="lg:grid lg:grid-cols-[1fr_5fr] h-screen">
-        <div className="hidden lg:flex">
-          <ProtectedSidebar />
+    <div className=" bg-gray-100">
+      <div className="min-h-screen flex flex-col max-w-screen-xl mx-auto">
+        <ProtectedNavbar />
+        <hr className="mt-2" />
+        <div className="lg:grid lg:grid-cols-[1fr_5fr] h-screen">
+          <div className="hidden lg:flex">
+            <ProtectedSidebar />
+          </div>
+          <div className="">{children}</div>
         </div>
-        <div className="">{children}</div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

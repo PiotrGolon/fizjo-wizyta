@@ -1,27 +1,58 @@
 "use client";
 import HeaderLogo from "../layout/header-logo";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import BackButton from "../layout/back-button";
 import { useMedia } from "react-use";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
-import { CalendarDays, CirclePlus, Menu } from "lucide-react";
+import {
+  CalendarClock,
+  CalendarDays,
+  CalendarPlus,
+  CirclePlus,
+  LockKeyhole,
+  Menu,
+} from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { DashboardIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 const protectedRoutes = [
   { href: "/dashboard", label: "Panel użytkownika", icon: DashboardIcon },
   { href: "/dashboard/moje-wizyty", label: "Moje wizyty", icon: CalendarDays },
   { href: "/dashboard/umow-wizyte", label: "Umów wizytę", icon: CirclePlus },
 ];
+const adminRoutes = [
+  {
+    href: "/dashboard/admin/moja-dostepnosc",
+    label: "Dodaj dostępność",
+    icon: CalendarPlus,
+  },
+  {
+    href: "/dashboard/admin/umowione-wizyty",
+    label: "Umówione wizyty",
+    icon: CalendarClock,
+  },
+];
+
+const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
 const ProtectedNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const { user } = useUser();
 
   const isMobile = useMedia("(max-width: 1024px)", false);
+
+  const isAdmin = user?.emailAddresses.some(
+    (email) => email.emailAddress === adminEmail
+  );
+
+  const isAdminDashboard = pathname?.includes("/admin");
+
+  const routes = isAdminDashboard ? adminRoutes : protectedRoutes;
 
   const onClick = (href: string) => {
     router.push(href);
@@ -32,7 +63,6 @@ const ProtectedNavbar = () => {
     <div className="flex justify-between mt-4">
       {isMobile ? (
         <>
-          {" "}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
@@ -45,7 +75,7 @@ const ProtectedNavbar = () => {
             </SheetTrigger>
             <SheetContent side="left" className="px-2">
               <nav className="flex flex-col gap-y-2 pt-6">
-                {protectedRoutes.map((route) => (
+                {routes.map((route) => (
                   <Button
                     key={route.href}
                     variant={route.href === pathname ? "secondary" : "ghost"}
@@ -64,6 +94,25 @@ const ProtectedNavbar = () => {
         <HeaderLogo href="/dashboard" />
       )}
       <div className="flex items-center gap-x-2">
+        {isAdmin && (
+          <Link href={isAdminDashboard ? "/dashboard" : "/dashboard/admin"}>
+            <Button
+              variant="ghost"
+              className="mr-2 w-full  lg:w-auto justify-between font-semibold text-green-600 hover:bg-green-400/20 hover:text-green-800 transition duration-300"
+            >
+              {isAdminDashboard ? (
+                <span className="flex items-center">
+                  Panel Użytkownika
+                  <DashboardIcon className="size-4 ml-1" />
+                </span>
+              ) : (
+                <span className="flex items-center">
+                  Panel Admina <LockKeyhole className="size-4 ml-1" />
+                </span>
+              )}
+            </Button>
+          </Link>
+        )}
         <BackButton href="/" />
         <UserButton />
       </div>
