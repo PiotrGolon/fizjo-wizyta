@@ -2,8 +2,8 @@
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { AnimatedSectionProps } from "@/types";
 import { useEffect } from "react";
+import { AnimatedSectionProps } from "../types/index";
 
 const AnimatedSectionContrastSmall = ({
   imageSrc,

@@ -2,7 +2,7 @@
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { AnimatedSectionProps } from "@/types";
+import { AnimatedSectionProps } from "@/types/index";
 import { useEffect } from "react";
 
 const AnimatedSection = ({
