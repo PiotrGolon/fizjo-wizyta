@@ -5,12 +5,12 @@ import Image from "next/image";
 import { AnimatedSectionProps } from "@/types";
 import { useEffect } from "react";
 
-const AnimatedSectionContrast = ({
+const AnimatedSectionSmall = ({
   imageSrc,
   altText,
   title,
   description,
-  reverse = true,
+  reverse = false,
 }: AnimatedSectionProps) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -36,16 +36,20 @@ const AnimatedSectionContrast = ({
 
   return (
     <div ref={ref} className="my-16">
-      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center`}>
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
+          reverse ? "md:flex-row-reverse" : ""
+        }`}
+      >
         {/* Obraz */}
         <motion.div
-          className={`w-full ${reverse ? "lg:order-2" : "lg:order-1"}`}
+          className="w-full"
           initial="hidden"
           animate={controls}
           variants={imageVariants}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-full h-full">
+          <div className="relative w-1/2 h-1/2 mx-auto lg:float-right">
             <Image
               src={imageSrc}
               alt={altText}
@@ -55,11 +59,10 @@ const AnimatedSectionContrast = ({
             />
           </div>
         </motion.div>
+
         {/* Tekst */}
         <motion.div
-          className={`w-full text-center lg:text-right ${
-            reverse ? "lg:order-1" : "lg:order-2"
-          }`}
+          className="w-full text-center lg:w-1/2 lg:text-left"
           initial="hidden"
           animate={controls}
           variants={textVariants}
@@ -68,11 +71,11 @@ const AnimatedSectionContrast = ({
           <h3 className="text-2xl font-semibold mb-4 text-green-500">
             {title}
           </h3>
-          <p className="text-green-700 ">{description}</p>
+          <p className="text-green-700">{description}</p>
         </motion.div>
       </div>
     </div>
   );
 };
 
-export default AnimatedSectionContrast;
+export default AnimatedSectionSmall;

@@ -49,12 +49,12 @@ const AnimatedSection = ({
           variants={imageVariants}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-full h-64 md:h-80 lg:h-96">
+          <div className="relative w-full h-full">
             <Image
               src={imageSrc}
               alt={altText}
-              layout="fill"
-              objectFit="cover"
+              width={960}
+              height={720}
               className="rounded-lg shadow-lg"
             />
           </div>
@@ -62,7 +62,7 @@ const AnimatedSection = ({
 
         {/* Tekst */}
         <motion.div
-          className="w-full"
+          className="w-full text-center lg:text-left"
           initial="hidden"
           animate={controls}
           variants={textVariants}

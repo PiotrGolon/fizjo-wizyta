@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AnimatedSectionProps } from "@/types";
 import { useEffect } from "react";
 
-const AnimatedSectionContrast = ({
+const AnimatedSectionContrastSmall = ({
   imageSrc,
   altText,
   title,
@@ -45,7 +45,7 @@ const AnimatedSectionContrast = ({
           variants={imageVariants}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-full h-full">
+          <div className="relative mx-auto w-1/2 h-1/2 lg:float-left">
             <Image
               src={imageSrc}
               alt={altText}
@@ -56,23 +56,25 @@ const AnimatedSectionContrast = ({
           </div>
         </motion.div>
         {/* Tekst */}
-        <motion.div
-          className={`w-full text-center lg:text-right ${
-            reverse ? "lg:order-1" : "lg:order-2"
-          }`}
-          initial="hidden"
-          animate={controls}
-          variants={textVariants}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          <h3 className="text-2xl font-semibold mb-4 text-green-500">
-            {title}
-          </h3>
-          <p className="text-green-700 ">{description}</p>
-        </motion.div>
+        <div className="flex justify-end">
+          <motion.div
+            className={`w-full lg:w-1/2 text-center lg:text-right ${
+              reverse ? "lg:order-1" : "lg:order-2"
+            }`}
+            initial="hidden"
+            animate={controls}
+            variants={textVariants}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-green-500">
+              {title}
+            </h3>
+            <p className="text-green-700 ">{description}</p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AnimatedSectionContrast;
+export default AnimatedSectionContrastSmall;

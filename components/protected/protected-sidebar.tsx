@@ -1,26 +1,25 @@
 "use client";
-import { DashboardIcon } from "@radix-ui/react-icons";
-import { CalendarDays, CirclePlus } from "lucide-react";
+
 import { Button } from "../ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-// import SidebarItem from "./sidebar-item";
+import { protectedRoutes, adminRoutes } from "@/assets/constants";
 
-const protectedRoutes = [
-  { href: "/dashboard", label: "Panel użytkownika", icon: DashboardIcon },
-  { href: "/dashboard/moje-wizyty", label: "Moje wizyty", icon: CalendarDays },
-  { href: "/dashboard/umow-wizyte", label: "Umów wizytę", icon: CirclePlus },
-];
 const ProtectedSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const isAdminDashboard = pathname?.includes("/admin");
+
+  const routes = isAdminDashboard ? adminRoutes : protectedRoutes;
+
   const onClick = (href: string) => {
     router.push(href);
   };
   return (
     <div className=" w-full mt-4  shadow-lg border rounded-lg">
       <div className="flex flex-col m-2 gap-y-4">
-        {protectedRoutes.map((route, index) => {
+        {routes.map((route, index) => {
           const isActive = pathname === route.href;
           return (
             <Button

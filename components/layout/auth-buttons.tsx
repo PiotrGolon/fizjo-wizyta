@@ -13,7 +13,9 @@ const AuthButtons = () => {
       <div className="flex items-center gap-x-2">
         <BackButton href="/dashboard" />
         <ClerkLoaded>
-          <UserButton />
+          <UserButton
+            appearance={{ elements: { userButtonAvatarBox: "size-14" } }}
+          />
         </ClerkLoaded>
         <ClerkLoading>
           <Loader2 className="animate-spin text-muted-foreground" />

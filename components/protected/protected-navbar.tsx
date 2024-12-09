@@ -6,35 +6,11 @@ import { useMedia } from "react-use";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
-import {
-  CalendarClock,
-  CalendarDays,
-  CalendarPlus,
-  CirclePlus,
-  LockKeyhole,
-  Menu,
-} from "lucide-react";
+import { LockKeyhole, Menu } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { DashboardIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-
-const protectedRoutes = [
-  { href: "/dashboard", label: "Panel użytkownika", icon: DashboardIcon },
-  { href: "/dashboard/moje-wizyty", label: "Moje wizyty", icon: CalendarDays },
-  { href: "/dashboard/umow-wizyte", label: "Umów wizytę", icon: CirclePlus },
-];
-const adminRoutes = [
-  {
-    href: "/dashboard/admin/moja-dostepnosc",
-    label: "Dodaj dostępność",
-    icon: CalendarPlus,
-  },
-  {
-    href: "/dashboard/admin/umowione-wizyty",
-    label: "Umówione wizyty",
-    icon: CalendarClock,
-  },
-];
+import { protectedRoutes, adminRoutes } from "@/assets/constants";
 
 const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
@@ -114,7 +90,9 @@ const ProtectedNavbar = () => {
           </Link>
         )}
         <BackButton href="/" />
-        <UserButton />
+        <UserButton
+          appearance={{ elements: { userButtonAvatarBox: "size-14" } }}
+        />
       </div>
     </div>
   );

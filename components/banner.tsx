@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <div className="lg:flex lg:h-[370px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-300 to-green-500 rounded-xl mb-12 ">
+    <div className="lg:flex lg:h-[370px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-300 to-green-500 rounded-xl mb-12">
       {/* ---- Left Side ------ */}
       <div className="flex flex-col items-center lg:items-start m-4 text-center lg:text-left text-white  font-extrabold drop-shadow-xl lg:mx-8">
         <div className="mt-4">
