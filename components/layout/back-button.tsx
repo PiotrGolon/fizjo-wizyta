@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import React from "react";
 import { Button } from "../ui/button";
 import { LogIn, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -8,7 +7,15 @@ import { usePathname } from "next/navigation";
 const BackButton = ({ href }: { href: string }) => {
   const pathname = usePathname();
 
-  const pagesRoutes = ["/", "/wolne-wizyty", "/cennik", "/o-mnie", "/kontakt"];
+  const pagesRoutes = [
+    "/",
+    "/wolne-wizyty",
+    "/wolne-wizyty/user_2n1u8b2jrjY5iSaD2FPsGK7cdd3/c926279f-0ed3-4a10-8c3e-f6adf7d4e479",
+    "/wolne-wizyty/user_2n1u8b2jrjY5iSaD2FPsGK7cdd3",
+    "/cennik",
+    "/o-mnie",
+    "/kontakt",
+  ];
 
   return (
     <div>

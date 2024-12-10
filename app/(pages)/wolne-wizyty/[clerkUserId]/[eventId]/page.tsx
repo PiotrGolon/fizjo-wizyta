@@ -1,3 +1,3 @@
-export default function AvailabilitiesUserIdByEventPage() {
-  return <div>Availability</div>;
+export default function ClerkUserEventPage() {
+  return <div>Hellon</div>;
 }

@@ -9,7 +9,10 @@ import {
 
 export const routes = [
   { href: "/", label: "Strona główna" },
-  { href: "/wolne-wizyty", label: "Umów wizytę" },
+  {
+    href: "/wolne-wizyty/user_2n1u8b2jrjY5iSaD2FPsGK7cdd3",
+    label: "Umów wizytę",
+  },
   { href: "/cennik", label: "Cennik" },
   { href: "/o-mnie", label: "O mnie" },
   { href: "/kontakt", label: "Kontakt" },

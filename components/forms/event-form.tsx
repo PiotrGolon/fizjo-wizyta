@@ -19,12 +19,35 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Textarea } from "../ui/textarea";
 import { Switch } from "../ui/switch";
-import { createEvent } from "@/server/actions/event";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTrigger,
+  AlertDialogTitle,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "../ui/alert-dialog";
+import { createEvent, deleteEvent, updateEvent } from "@/server/actions/event";
+import { useTransition } from "react";
 
-export function EventForm() {
+export function EventForm({
+  event,
+}: {
+  event?: {
+    id: string;
+    name: string;
+    description?: string;
+    durationInMinutes: number;
+    isActive: boolean;
+  };
+}) {
+  const [isDeletePending, startDeleteTransition] = useTransition();
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
-    defaultValues: {
+    defaultValues: event ?? {
       name: "",
       isActive: true,
       durationInMinutes: 60,
@@ -32,7 +55,9 @@ export function EventForm() {
   });
 
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    const data = await createEvent(values);
+    const action =
+      event == null ? createEvent : updateEvent.bind(null, event.id);
+    const data = await action(values);
 
     if (data?.error) {
       form.setError("root", {
@@ -127,50 +152,50 @@ export function EventForm() {
           )}
         />
         <div className="flex gap-2 justify-end">
-          {/* {event && (
+          {event && (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
                   variant="destructiveGhost"
                   disabled={isDeletePending || form.formState.isSubmitting}
                 >
-                  Delete
+                  Usuń
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                  <AlertDialogTitle>Jesteś pewien?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your this event.
+                    Jeśli potwierdzisz ten rodzaj wizyty zostanie usunięty na
+                    stałe
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Anuluj</AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
                     variant="destructive"
                     onClick={() => {
                       startDeleteTransition(async () => {
-                        const data = await deleteEvent(event.id)
+                        const data = await deleteEvent(event.id);
 
                         if (data?.error) {
                           form.setError("root", {
                             message: "There was an error deleting your event",
-                          })
+                          });
                         }
-                      })
+                      });
                     }}
                   >
-                    Delete
+                    Potwierdź
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
-          )} */}
+          )}
 
           <Button
-            disabled={form.formState.isSubmitting}
+            disabled={isDeletePending || form.formState.isSubmitting}
             className="text-green-700 hover:text-green-800 duration-300"
             type="button"
             asChild
@@ -180,7 +205,7 @@ export function EventForm() {
           </Button>
           <Button
             className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
-            disabled={form.formState.isSubmitting}
+            disabled={isDeletePending || form.formState.isSubmitting}
             type="submit"
           >
             Zapisz
