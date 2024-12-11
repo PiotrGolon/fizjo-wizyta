@@ -8,7 +8,6 @@ const BackButton = ({ href }: { href: string }) => {
   const pathname = usePathname();
 
   const pagesRoutesPrefixes = [
-    "/",
     "/wolne-wizyty",
     "/cennik",
     "/o-mnie",
@@ -25,7 +24,7 @@ const BackButton = ({ href }: { href: string }) => {
           variant="ghost"
           className="mr-2 w-full  lg:w-auto justify-between font-semibold text-green-600 hover:bg-green-400/20 hover:text-green-800 transition duration-300"
         >
-          {isPageRoute ? (
+          {isPageRoute || pathname === "/" ? (
             <>
               Panel użytkownika <LogIn className="size-5 ml-1" />
             </>

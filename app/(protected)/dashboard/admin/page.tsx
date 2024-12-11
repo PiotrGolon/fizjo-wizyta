@@ -11,12 +11,21 @@ import {
 import { db } from "@/drizzle/db";
 import { formatEventDescription } from "@/lib/formatters";
 import { cn } from "@/lib/utils";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { CalendarPlus2Icon, CalendarRange } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function AdminDashboardPage() {
   const { userId, redirectToSignIn } = auth();
+  const user = await currentUser();
+
+  if (
+    !user ||
+    user.emailAddresses[0].emailAddress !== process.env.NEXT_PUBLIC_ADMIN_EMAIL
+  ) {
+    return notFound();
+  }
 
   if (userId == null) {
     redirectToSignIn();

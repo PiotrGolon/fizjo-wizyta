@@ -73,3 +73,25 @@ export const ScheduleAvailabilityRelations = relations(
     }),
   })
 );
+
+export const MeetingsTable = pgTable("meetings", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  clerkUserId: text("clerkUserId").notNull(),
+  timezone: text("timezone").notNull(),
+  startTime: timestamp("startTime").notNull(),
+  eventId: uuid("eventId")
+    .notNull()
+    .references(() => EventTable.id, { onDelete: "cascade" }),
+  guestEmail: text("guestEmail").notNull(),
+  guestName: text("guestName").notNull(),
+  guestNotes: text("guestNotes"),
+  createdAt,
+  updatedAt,
+});
+
+export const meetingsRelations = relations(MeetingsTable, ({ one }) => ({
+  event: one(EventTable, {
+    fields: [MeetingsTable.eventId],
+    references: [EventTable.id],
+  }),
+}));

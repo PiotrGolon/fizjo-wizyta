@@ -29,7 +29,7 @@ import { CalendarIcon } from "lucide-react";
 import {
   formatDate,
   formatTimeString,
-  formatTimezoneOffset,
+  // formatTimezoneOffset,
 } from "@/lib/formatters";
 import { Calendar } from "../ui/calendar";
 import { cn } from "@/lib/utils";
@@ -82,31 +82,6 @@ export function MeetingForm({
             {form.formState.errors.root.message}
           </div>
         )}
-        <FormField
-          control={form.control}
-          name="timezone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Timezone</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {Intl.supportedValuesOf("timeZone").map((timezone) => (
-                    <SelectItem key={timezone} value={timezone}>
-                      {timezone}
-                      {` (${formatTimezoneOffset(timezone)})`}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
         <div className="flex gap-4 flex-col md:flex-row">
           <FormField
@@ -115,7 +90,7 @@ export function MeetingForm({
             render={({ field }) => (
               <Popover>
                 <FormItem className="flex-1">
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel className="text-green-600">Data</FormLabel>
                   <PopoverTrigger
                     asChild
                     className="focus-visible:ring-green-600 "
@@ -131,7 +106,7 @@ export function MeetingForm({
                         {field.value ? (
                           formatDate(field?.value)
                         ) : (
-                          <span>Pick a date</span>
+                          <span>Wybierz datę</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
@@ -160,7 +135,7 @@ export function MeetingForm({
             name="startTime"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Czas</FormLabel>
+                <FormLabel className="text-green-600">Czas</FormLabel>
                 <Select
                   disabled={date == null || timezone == null}
                   onValueChange={(value) =>
@@ -203,7 +178,9 @@ export function MeetingForm({
             name="guestName"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Your Name</FormLabel>
+                <FormLabel className="text-green-600">
+                  Imię i nazwisko pacjenta
+                </FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -216,7 +193,7 @@ export function MeetingForm({
             name="guestEmail"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Your Email</FormLabel>
+                <FormLabel className="text-green-600">E-mail</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -230,7 +207,10 @@ export function MeetingForm({
           name="guestNotes"
           render={({ field }) => (
             <FormItem className="flex-1">
-              <FormLabel>Your notes</FormLabel>
+              <FormLabel className="text-green-600">
+                Podaj dodatkowe informacje np. rodzaj urazu, powód wizyty
+                (Opcjonalnie)
+              </FormLabel>
               <FormControl>
                 <Textarea className="resize-none" {...field} />
               </FormControl>
@@ -238,10 +218,10 @@ export function MeetingForm({
             </FormItem>
           )}
         />
-        <div className="flex gap-2 justify-end">
+        <div className="flex flex-col md:flex-row gap-2 justify-end">
           <Button
             disabled={form.formState.isSubmitting}
-            className="text-green-700 hover:text-green-800 duration-300"
+            className="text-green-700 hover:text-green-800 duration-300 w-full md:w-auto"
             type="button"
             asChild
             variant="outline"
@@ -251,7 +231,7 @@ export function MeetingForm({
             </Link>
           </Button>
           <Button
-            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
             disabled={form.formState.isSubmitting}
             type="submit"
           >

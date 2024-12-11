@@ -7,6 +7,7 @@ import "use-server";
 import { z } from "zod";
 import { createCalendarEvent } from "../googleCalendar";
 import { fromZonedTime } from "date-fns-tz";
+import { MeetingsTable } from "@/drizzle/schema";
 
 export async function createMeeting(
   unsafeData: z.infer<typeof meetingActionSchema>
@@ -37,6 +38,16 @@ export async function createMeeting(
     startTime: startInTimezone,
     durationInMinutes: event.durationInMinutes,
     eventName: event.name,
+  });
+
+  await db.insert(MeetingsTable).values({
+    clerkUserId: data.clerkUserId,
+    timezone: data.timezone,
+    startTime: startInTimezone,
+    eventId: data.eventId,
+    guestEmail: data.guestEmail,
+    guestName: data.guestName,
+    guestNotes: data.guestNotes,
   });
 
   redirect(

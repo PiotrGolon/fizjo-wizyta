@@ -151,11 +151,12 @@ export function EventForm({
             </FormItem>
           )}
         />
-        <div className="flex gap-2 justify-end">
+        <div className="flex flex-col md:flex-row gap-2 justify-end">
           {event && (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
+                  className="w-full md:w-auto"
                   variant="destructiveGhost"
                   disabled={isDeletePending || form.formState.isSubmitting}
                 >
@@ -196,7 +197,7 @@ export function EventForm({
 
           <Button
             disabled={isDeletePending || form.formState.isSubmitting}
-            className="text-green-700 hover:text-green-800 duration-300"
+            className="text-green-700 hover:text-green-800 duration-300 w-full md:w-auto"
             type="button"
             asChild
             variant="outline"
@@ -204,7 +205,7 @@ export function EventForm({
             <Link href="/dashboard/admin">Anuluj</Link>
           </Button>
           <Button
-            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
             disabled={isDeletePending || form.formState.isSubmitting}
             type="submit"
           >

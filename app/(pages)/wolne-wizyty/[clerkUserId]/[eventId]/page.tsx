@@ -48,8 +48,8 @@ export default async function ClerkUserEventPage({
     <div className="max-w-screen-2xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle>
-            Zarezerwuj {event.name} u {calendarUser.fullName}
+          <CardTitle className="text-xl text-green-700">
+            Rezerwujesz - {event.name} u {calendarUser.fullName}
           </CardTitle>
           {event.description && (
             <CardDescription>{event.description}</CardDescription>

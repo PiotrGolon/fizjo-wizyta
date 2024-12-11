@@ -30,6 +30,12 @@ const ProtectedNavbar = () => {
 
   const routes = isAdminDashboard ? adminRoutes : protectedRoutes;
 
+  const pagesRoutesPrefixes = ["/dashboard/admin"];
+
+  const isPageRoute = pagesRoutesPrefixes.some((prefix) =>
+    pathname.startsWith(prefix)
+  );
+
   const onClick = (href: string) => {
     router.push(href);
     setIsOpen(false);
@@ -76,7 +82,7 @@ const ProtectedNavbar = () => {
               variant="ghost"
               className="mr-2 w-full  lg:w-auto justify-between font-semibold text-green-600 hover:bg-green-400/20 hover:text-green-800 transition duration-300"
             >
-              {isAdminDashboard ? (
+              {isPageRoute ? (
                 <span className="flex items-center">
                   Panel Użytkownika
                   <DashboardIcon className="size-4 ml-1" />

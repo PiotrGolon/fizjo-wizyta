@@ -8,6 +8,13 @@
       "when": 1733420278490,
       "tag": "0000_calm_thundra",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1733954887695,
+      "tag": "0001_mighty_thaddeus_ross",
+      "breakpoints": true
     }
   ]
 }
