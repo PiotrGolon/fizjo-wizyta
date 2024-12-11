@@ -33,10 +33,10 @@ export default async function BookingPage({
       <PhysioDecription />
 
       <div className="text-muted-foreground mb-6 max-w-sm mx-auto mt-4 text-center">
-        Nie czekaj w kolejkach! Skorzystaj z naszego harmonogramu online i umów
-        wizytę w dogodnym dla Ciebie czasie.
+        Nie czekaj w kolejkach! Skorzystaj z mojego harmonogramu i umów wizytę w
+        dogodnym dla Ciebie czasie.
       </div>
-      <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+      <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(400px,1fr))]">
         {events.map((event) => (
           <EventCard key={event.id} {...event} />
         ))}

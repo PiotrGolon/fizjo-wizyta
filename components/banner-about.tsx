@@ -14,7 +14,7 @@ const BannerAbout = () => {
           </p>
         </div>
         <div className="flex flex-col lg:flex-row gap-x-4 w-full px-8 lg:justify-center lg:py-8">
-          <Link href="/wolne-wizyty">
+          <Link href="/wolne-wizyty/user_2n1u8b2jrjY5iSaD2FPsGK7cdd3">
             <Button
               variant="signIn"
               size="lg"
@@ -23,7 +23,7 @@ const BannerAbout = () => {
               Wolne terminy
             </Button>
           </Link>
-          <Link href="/wolne-wizyty">
+          <Link href="/sign-in">
             <Button
               variant="secondary"
               size="lg"

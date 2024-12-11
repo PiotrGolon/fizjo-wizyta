@@ -29,6 +29,7 @@ import { Fragment, useState } from "react";
 import { Plus, X } from "lucide-react";
 import { Input } from "../ui/input";
 import { saveSchedule } from "@/server/actions/schedule";
+import { useRouter } from "next/navigation";
 
 type Availability = {
   startTime: string;
@@ -44,6 +45,7 @@ export function ScheduleForm({
     availabilities: Availability[];
   };
 }) {
+  const router = useRouter();
   const [successMessage, setSuccessMessage] = useState<string>();
   const form = useForm<z.infer<typeof scheduleFormSchema>>({
     resolver: zodResolver(scheduleFormSchema),
@@ -77,6 +79,7 @@ export function ScheduleForm({
       });
     } else {
       setSuccessMessage("Harmonogram zapisany!");
+      setTimeout(() => router.push("/dashboard/admin"), 2000);
     }
   }
 
@@ -224,7 +227,7 @@ export function ScheduleForm({
             disabled={form.formState.isSubmitting}
             type="submit"
           >
-            Save
+            Zapisz
           </Button>
         </div>
       </form>
