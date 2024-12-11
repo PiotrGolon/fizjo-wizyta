@@ -6,7 +6,6 @@ import { getCalendarEventTimes } from "@/server/googleCalendar";
 import {
   addMinutes,
   areIntervalsOverlapping,
-  DateArg,
   Interval,
   isFriday,
   isMonday,
@@ -59,7 +58,7 @@ export async function getValidTimesFromSchedule(
     };
 
     return (
-      eventTimes.every((eventTime: Interval<DateArg<Date>, DateArg<Date>>) => {
+      eventTimes.every((eventTime: Interval<Date>) => {
         return !areIntervalsOverlapping(eventTime, eventInterval);
       }) &&
       availabilities.some((availability) => {
