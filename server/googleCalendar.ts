@@ -2,21 +2,88 @@ import "use-server";
 import { clerkClient } from "@clerk/nextjs/server";
 import { google } from "googleapis";
 import { addMinutes, endOfDay, startOfDay } from "date-fns";
+import { CalendarEvent } from "@/types/calendar";
 
-interface CalendarEvent {
-  start?: {
-    date?: string;
-    dateTime?: string;
-    timeZone?: string;
-  };
-  end?: {
-    date?: string;
-    dateTime?: string;
-    timeZone?: string;
-  };
-  summary?: string;
-  description?: string;
-  location?: string;
+interface SortedEvents {
+  upcoming: CalendarEvent[];
+  past: CalendarEvent[];
+}
+
+export async function deleteEvent(clerkUserId: string, eventId: string) {
+  const oAuthClient = await getOAuthClient(clerkUserId);
+
+  if (!oAuthClient) {
+    throw new Error(
+      "Nie można uzyskać klienta OAuth. Upewnij się, że użytkownik autoryzował aplikację w Google."
+    );
+  }
+
+  const calendar = google.calendar({ version: "v3", auth: oAuthClient });
+
+  try {
+    await calendar.events.delete({
+      calendarId: "primary",
+      eventId: eventId,
+    });
+  } catch (error) {
+    console.error("Błąd podczas usuwania wydarzeń z Google Calendar:", error);
+    throw new Error("Nie udało się usunąć wydarzenia z Google Calendar.");
+  }
+}
+
+export async function fetchAndSortUserGoogleCalendarEvents(
+  clerkUserId: string
+): Promise<SortedEvents> {
+  const oAuthClient = await getOAuthClient(clerkUserId);
+
+  if (!oAuthClient) {
+    throw new Error(
+      "Nie można uzyskać klienta OAuth. Upewnij się, że użytkownik autoryzował aplikację w Google."
+    );
+  }
+
+  const calendar = google.calendar({ version: "v3", auth: oAuthClient });
+
+  const now = new Date();
+
+  try {
+    const eventsResponse = await calendar.events.list({
+      calendarId: "primary",
+      singleEvents: true,
+      orderBy: "startTime",
+      timeMin: new Date(1970, 0, 1).toISOString(), // Minimalna data (epoka Unix)
+      timeMax: new Date(2100, 0, 1).toISOString(), // Maksymalna data w przyszłości
+      maxResults: 2500,
+    });
+
+    const events = eventsResponse.data.items || [];
+
+    const upcoming: CalendarEvent[] = [];
+    const past: CalendarEvent[] = [];
+
+    events.forEach((event: CalendarEvent) => {
+      let eventStart: Date | null = null;
+
+      if (event.start?.date) {
+        eventStart = startOfDay(new Date(event.start.date));
+      } else if (event.start?.dateTime) {
+        eventStart = new Date(event.start.dateTime);
+      }
+
+      if (eventStart) {
+        if (eventStart >= now) {
+          upcoming.push(event);
+        } else {
+          past.push(event);
+        }
+      }
+    });
+
+    return { upcoming, past };
+  } catch (error) {
+    console.error("Błąd podczas pobierania wydarzeń z Google Calendar:", error);
+    throw new Error("Nie udało się pobrać wydarzeń z Google Calendar.");
+  }
 }
 
 export async function getCalendarEventTimes(
