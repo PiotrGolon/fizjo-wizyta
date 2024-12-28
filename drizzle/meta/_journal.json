@@ -15,6 +15,13 @@
       "when": 1733954887695,
       "tag": "0001_mighty_thaddeus_ross",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1735393389481,
+      "tag": "0002_robust_eddie_brock",
+      "breakpoints": true
     }
   ]
 }

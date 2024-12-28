@@ -9,6 +9,7 @@ import {
   text,
   timestamp,
   uuid,
+  date as pgDate,
 } from "drizzle-orm/pg-core";
 
 const createdAt = timestamp("createdAt").notNull().defaultNow();
@@ -44,6 +45,7 @@ export const ScheduleTable = pgTable("schedules", {
 
 export const scheduleRelations = relations(ScheduleTable, ({ many }) => ({
   availabilities: many(ScheduleAvailabilityTable),
+  dateAvailabilities: many(ScheduleDateAvailabilityTable),
 }));
 
 export const scheduleDayOfWeekEnum = pgEnum("day", DAYS_OF_WEEK_IN_ORDER);
@@ -95,3 +97,31 @@ export const meetingsRelations = relations(MeetingsTable, ({ one }) => ({
     references: [EventTable.id],
   }),
 }));
+
+export const ScheduleDateAvailabilityTable = pgTable(
+  "scheduleDateAvailabilities",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => ScheduleTable.id, { onDelete: "cascade" }),
+    date: pgDate("date").notNull(), // Konkretny dzień
+    startTime: text("startTime").notNull(),
+    endTime: text("endTime").notNull(),
+  },
+  (table) => ({
+    scheduleIdIndex: index("scheduleDateAvailability_scheduleIdIndex").on(
+      table.scheduleId
+    ),
+  })
+);
+
+export const ScheduleDateAvailabilityRelations = relations(
+  ScheduleDateAvailabilityTable,
+  ({ one }) => ({
+    schedule: one(ScheduleTable, {
+      fields: [ScheduleDateAvailabilityTable.scheduleId],
+      references: [ScheduleTable.id],
+    }),
+  })
+);
