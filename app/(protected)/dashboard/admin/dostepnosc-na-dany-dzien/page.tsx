@@ -13,9 +13,9 @@ export default async function ScheduleDatesPage() {
   // Załóżmy, że mamy only-admin logic:
   if (
     !user ||
-    user.emailAddresses[0]?.emailAddress !==
-      process.env.NEXT_PUBLIC_ADMIN_EMAIL ||
-    process.env.NEXT_PUBLIC_OWNER_EMAIL
+    (user.emailAddresses[0]?.emailAddress !==
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL &&
+      process.env.NEXT_PUBLIC_OWNER_EMAIL)
   ) {
     return notFound();
   }
