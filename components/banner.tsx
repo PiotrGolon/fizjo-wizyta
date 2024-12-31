@@ -4,16 +4,18 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <div className="lg:flex lg:h-[370px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-300 to-green-500 rounded-xl mb-12">
+    <div className="lg:flex lg:h-[370px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-300 to-blue-700 rounded-xl mb-12">
       {/* ---- Left Side ------ */}
-      <div className="flex flex-col items-center lg:items-start m-4 text-center lg:text-left text-white  font-extrabold drop-shadow-xl lg:mx-8">
+      <div className="flex flex-col items-center lg:items-start m-4 text-center lg:text-left text-white  font-extrabold  lg:mx-8">
         <div className="mt-4">
-          <p className="text-3xl lg:text-5xl">Zarezerwuj wizytę!</p>
-          <p className="text-2xl lg:text-4xl mt-4 lg:mt-12 text-blue-800">
+          <p className="text-3xl lg:text-5xl text-blue-100">
+            Zarezerwuj wizytę!
+          </p>
+          <p className="text-2xl lg:text-4xl mt-4 lg:mt-12 ">
             Z zaufanym specjalistą, w twoim mieście!
           </p>
         </div>
-        <Link href="/wolne-wizyty">
+        <Link href="/wolne-wizyty/user_2n1u8b2jrjY5iSaD2FPsGK7cdd3">
           <Button
             variant="signIn"
             size="lg"

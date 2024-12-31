@@ -9,7 +9,7 @@ const PassionItem = ({ text, margin }: PassionItemProps) => {
   return (
     <div
       className={cn(
-        "flex p-4 w-full lg:w-auto justify-center text-green-600 hover:text-green-700 border shadow-xl rounded-full hover:translate-y-[-10px] hover:bg-green-50 transition duration-500",
+        "flex p-4 w-full lg:w-auto justify-center text-blue-600 hover:text-blue-700 border shadow-xl rounded-full hover:translate-y-[-10px] hover:bg-blue-50 transition duration-500",
         margin && `${margin}`
       )}
     >

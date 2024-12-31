@@ -66,10 +66,10 @@ const AnimatedSectionContrastSmall = ({
             variants={textVariants}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-green-500">
+            <h3 className="text-2xl font-semibold mb-4 text-blue-500">
               {title}
             </h3>
-            <p className="text-green-700 ">{description}</p>
+            <p className="text-blue-700 ">{description}</p>
           </motion.div>
         </div>
       </div>

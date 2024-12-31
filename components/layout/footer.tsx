@@ -5,7 +5,7 @@ const Footer = () => {
         {/* Copyrigth */}
         <div>
           <hr />
-          <p className="py-5 text-sm text-center text-green-700">
+          <p className="py-5 text-sm text-center text-blue-700">
             Copyright © 2024 Tomasz Deput - All Right Reserved.
           </p>
         </div>

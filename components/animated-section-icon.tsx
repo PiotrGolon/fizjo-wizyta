@@ -51,7 +51,7 @@ const AnimatedSectionIcon = ({
           variants={imageVariants}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex h-24 w-24 bg-green-500 md:h-48 md:w-48 lg:h-60 lg:w-60 rounded-full p-5">
+          <div className="flex h-24 w-24 bg-blue-500 md:h-48 md:w-48 lg:h-60 lg:w-60 rounded-full p-5">
             <Image
               src={imageSrc}
               alt={altText}
@@ -71,13 +71,11 @@ const AnimatedSectionIcon = ({
           variants={textVariants}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <h3 className="text-2xl font-semibold mb-4 text-green-500">
-            {title}
-          </h3>
-          <p className="text-green-700">{description}</p>
-          {notes && <p className="text-green-800 text-sm mt-2">{notes}</p>}
+          <h3 className="text-2xl font-semibold mb-4 text-blue-500">{title}</h3>
+          <p className="text-blue-700">{description}</p>
+          {notes && <p className="text-blue-800 text-sm mt-2">{notes}</p>}
           {openingHours && (
-            <p className="text-green-800 text-sm mt-2">
+            <p className="text-blue-800 text-sm mt-2">
               Godziny otwarcia: {openingHours}
             </p>
           )}

@@ -28,17 +28,17 @@ const priceList = [
 const PriceTable: FC = () => {
   return (
     <div className="my-8 p-4 bg-white rounded-lg shadow-lg border">
-      <h2 className="text-2xl font-bold mb-6 text-center text-green-500 drop-shadow-md">
+      <h2 className="text-2xl font-bold mb-6 text-center text-blue-500 drop-shadow-md">
         Cennik usług
       </h2>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="font-semibold text-green-600">
+            <TableHead className="font-semibold text-blue-600">
               Rodzaj badania
             </TableHead>
-            <TableHead className="font-semibold text-green-600">Cena</TableHead>
-            <TableHead className="font-semibold text-green-600">
+            <TableHead className="font-semibold text-blue-600">Cena</TableHead>
+            <TableHead className="font-semibold text-blue-600">
               Czas trwania
             </TableHead>
           </TableRow>
@@ -46,9 +46,9 @@ const PriceTable: FC = () => {
         <TableBody>
           {priceList.map((item, index) => (
             <TableRow key={index}>
-              <TableCell className="text-green-800">{item.type}</TableCell>
-              <TableCell className="text-green-800">{item.price}</TableCell>
-              <TableCell className="text-green-800">{item.duration}</TableCell>
+              <TableCell className="text-blue-800">{item.type}</TableCell>
+              <TableCell className="text-blue-800">{item.price}</TableCell>
+              <TableCell className="text-blue-800">{item.duration}</TableCell>
             </TableRow>
           ))}
         </TableBody>

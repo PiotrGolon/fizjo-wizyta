@@ -10,7 +10,7 @@ const PassionCircle = () => {
         <PassionItem text="Mobilizacja" margin="lg:mr-20" />
         <PassionItem text="Kinezjologia" margin="lg:ml-10" />
       </div>
-      <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-300 to-green-500 rounded-full overflow-hidden shadow-xl max-w-[526px] lg:min-w-[375px] mx-auto">
+      <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-300 to-blue-600 rounded-full overflow-hidden shadow-xl max-w-[526px] lg:min-w-[375px] mx-auto">
         <Image
           src="/images/doc1.png"
           alt="about me image"

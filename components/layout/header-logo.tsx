@@ -15,11 +15,7 @@ const HeaderLogo = ({ href }: HeaderLogoProps) => {
           src="/icons/logo-icon.svg"
           alt="logo-icon"
         />
-        <h1
-          className="text-xl font-bold text-transparent bg-gradient-to-r from-blue-500 to-blue-300 
-                     bg-clip-text drop-shadow-xl 
-                     transition-all duration-500 bg-[length:200%_200%] bg-right hover:bg-left"
-        >
+        <h1 className="text-xl font-bold text-transparent bg-gradient-to-r from-blue-500 to-blue-300 bg-clip-text drop-shadow-xl transition-all duration-500 bg-[length:200%_200%] bg-right hover:bg-left">
           Tomasz Deput Fizjoterapia
         </h1>
       </div>

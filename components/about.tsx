@@ -13,7 +13,7 @@ export default function About() {
       id="about"
     >
       <SectionHeading>Tomasz Deput</SectionHeading>
-      <p className="mb-3 text-green-800">
+      <p className="mb-3 text-blue-800">
         Po ukończeniu studiów na kierunku{" "}
         <span className="font-medium">fizjoterapia</span>, postanowiłem rozwijać
         swoją pasję do pracy z ludźmi. Zrealizowałem szereg kursów
@@ -33,7 +33,7 @@ export default function About() {
         <span className="font-medium">pełny etat</span> jako fizjoterapeuta.
       </p>
 
-      <p className="text-green-800 mt-2">
+      <p className="text-blue-800 mt-2">
         <span className="italic">Kiedy nie pracuję</span>, lubię spędzać czas
         aktywnie, grając w tenisa oraz biegając. Fascynuje mnie również{" "}
         <span className="font-medium">
