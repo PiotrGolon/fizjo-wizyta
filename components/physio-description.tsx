@@ -5,7 +5,7 @@ import AboutCard from "./about-card";
 const PhysioDecription = () => {
   return (
     <div className="flex flex-col lg:flex-row lg:gap-x-4">
-      <div className="flex justify-center min-w-[399px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-400 to-green-500 rounded-xl">
+      <div className="flex justify-center min-w-[399px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-300 to-blue-600 rounded-xl">
         <Image
           src="/images/doc1.png"
           alt="physio image"

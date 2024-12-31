@@ -48,7 +48,7 @@ export default async function ClerkUserEventPage({
     <div className="max-w-screen-2xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl text-green-700">
+          <CardTitle className="text-xl text-blue-700">
             Rezerwujesz - {event.name} u {calendarUser.fullName}
           </CardTitle>
           {event.description && (
@@ -91,7 +91,7 @@ function NoTimeSlots({
       <CardFooter>
         <Button
           asChild
-          className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+          className="bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300"
         >
           <Link href={`/wolne-wizyty/${calendarUser.id}`}>
             Wybierz inną usługę

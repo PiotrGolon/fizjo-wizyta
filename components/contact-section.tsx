@@ -6,6 +6,7 @@ const ContactSection = () => {
       <h3 className="text-center text-blue-500 font-semibold text-xl">
         <span className="drop-shadow-lg">Masz Pytanie?</span> Pytaj śmiało!
       </h3>
+
       <ContactForm />
     </div>
   );

@@ -71,7 +71,7 @@ function EventCard({
       {description != null && <CardContent>{description}</CardContent>}
       <CardFooter className="flex justify-end gap-2 mt-auto">
         <Button
-          className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+          className="bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300"
           asChild
         >
           <Link href={`/wolne-wizyty/${clerkUserId}/${id}`}>Wybierz</Link>

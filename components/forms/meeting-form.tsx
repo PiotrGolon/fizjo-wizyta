@@ -88,7 +88,7 @@ export function MeetingForm({
           name="timezone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-green-600">Timezone</FormLabel>
+              <FormLabel className="text-blue-600">Timezone</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -116,10 +116,10 @@ export function MeetingForm({
             render={({ field }) => (
               <Popover>
                 <FormItem className="flex-1">
-                  <FormLabel className="text-green-600">Data</FormLabel>
+                  <FormLabel className="text-blue-600">Data</FormLabel>
                   <PopoverTrigger
                     asChild
-                    className="focus-visible:ring-green-600 "
+                    className="focus-visible:ring-blue-600 "
                   >
                     <FormControl>
                       <Button
@@ -161,7 +161,7 @@ export function MeetingForm({
             name="startTime"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-green-600">Czas</FormLabel>
+                <FormLabel className="text-blue-600">Czas</FormLabel>
                 <Select
                   disabled={date == null || timezone == null}
                   onValueChange={(value) =>
@@ -204,7 +204,7 @@ export function MeetingForm({
             name="guestName"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-green-600">
+                <FormLabel className="text-blue-600">
                   Imię i nazwisko pacjenta
                 </FormLabel>
                 <FormControl>
@@ -219,7 +219,7 @@ export function MeetingForm({
             name="guestEmail"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-green-600">E-mail</FormLabel>
+                <FormLabel className="text-blue-600">E-mail</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -233,7 +233,7 @@ export function MeetingForm({
           name="guestNotes"
           render={({ field }) => (
             <FormItem className="flex-1">
-              <FormLabel className="text-green-600">
+              <FormLabel className="text-blue-600">
                 Podaj dodatkowe informacje np. rodzaj urazu, powód wizyty
                 (Opcjonalnie)
               </FormLabel>
@@ -247,7 +247,7 @@ export function MeetingForm({
         <div className="flex flex-col md:flex-row gap-2 justify-end">
           <Button
             disabled={form.formState.isSubmitting}
-            className="text-green-700 hover:text-green-800 duration-300 w-full md:w-auto"
+            className="text-blue-700 hover:text-blue-800 duration-300 w-full md:w-auto"
             type="button"
             asChild
             variant="outline"
@@ -257,7 +257,7 @@ export function MeetingForm({
             </Link>
           </Button>
           <Button
-            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
+            className="bg-blue-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
             disabled={form.formState.isSubmitting}
             type="submit"
           >
