@@ -257,7 +257,7 @@ export function MeetingForm({
             </Link>
           </Button>
           <Button
-            className="bg-blue-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
+            className="bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300 w-full md:w-auto"
             disabled={form.formState.isSubmitting}
             type="submit"
           >

@@ -11,7 +11,7 @@ const AuthButtons = () => {
   if (sessionId) {
     return (
       <div className="flex items-center gap-x-2">
-        <BackButton href="/dashboard" />
+        <BackButton href="/dashboard/admin" />
         <ClerkLoaded>
           <UserButton
             appearance={{ elements: { userButtonAvatarBox: "size-14" } }}

@@ -11,7 +11,7 @@ const SignUpPage = () => {
             appearance={{
               elements: {
                 formButtonPrimary:
-                  "bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-sm ",
+                  "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-400 text-sm ",
               },
             }}
           />
