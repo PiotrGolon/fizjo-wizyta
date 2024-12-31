@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
-import { Button } from "../ui/button";
+// import Link from "next/link";
+// import { Button } from "../ui/button";
 import { ClerkLoaded, ClerkLoading, useAuth, UserButton } from "@clerk/nextjs";
 import { Loader2 } from "lucide-react";
 import BackButton from "./back-button";
@@ -26,11 +26,11 @@ const AuthButtons = () => {
 
   return (
     <div className="flex items-center gap-x-2 mr-2 2xl:mr-0">
-      <Link href="/sign-in">
+      {/* <Link href="/sign-in">
         <Button
           size="lg"
           variant="outline"
-          className="text-green-500 hover:text-green-700"
+          className="text-blue-500 hover:text-blue-700"
         >
           Zaloguj się
         </Button>
@@ -39,7 +39,7 @@ const AuthButtons = () => {
         <Button size="lg" variant="signIn">
           Zarejestruj się
         </Button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

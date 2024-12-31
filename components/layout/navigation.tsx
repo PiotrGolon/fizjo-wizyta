@@ -30,7 +30,7 @@ const Navigation = () => {
           <Button
             variant="outline"
             size="sm"
-            className="font-normal bg-white/20 hover:bg-white/20 hover:text-green-600 border-none focus-vissible:ring-offset-0 focus-visible:ring-transparent outline-none focus:bg-white/30 transition duration-300"
+            className="font-normal bg-white/20 hover:bg-white/20 hover:text-blue-600 border-none focus-vissible:ring-offset-0 focus-visible:ring-transparent outline-none focus:bg-white/30 transition duration-300"
           >
             <Menu className="size-4" />
           </Button>

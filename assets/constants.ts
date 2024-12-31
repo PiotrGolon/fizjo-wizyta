@@ -31,7 +31,7 @@ export const adminRoutes = [
     icon: UserCog,
   },
   {
-    href: "/dashboard/admin/moja-dostepnosc",
+    href: "/dashboard/admin/dostepnosc-na-dany-dzien",
     label: "Dodaj dostępność",
     icon: CalendarPlus,
   },

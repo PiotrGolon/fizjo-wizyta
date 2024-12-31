@@ -22,7 +22,7 @@ const BackButton = ({ href }: { href: string }) => {
       <Link href={href}>
         <Button
           variant="ghost"
-          className="mr-2 w-full  lg:w-auto justify-between font-semibold text-green-600 hover:bg-green-400/20 hover:text-green-800 transition duration-300"
+          className="mr-2 w-full  lg:w-auto justify-between font-semibold text-blue-600 hover:bg-blue-400/20 hover:text-blue-800 transition duration-300"
         >
           {isPageRoute || pathname === "/" ? (
             <>

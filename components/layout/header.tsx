@@ -1,8 +1,11 @@
+"use client";
+import { useAuth } from "@clerk/nextjs";
 import AuthButtons from "./auth-buttons";
 import HeaderLogo from "./header-logo";
 import Navigation from "./navigation";
 
 const Header = () => {
+  const isLoggedIn = useAuth();
   return (
     <header className="px-4 py-8">
       <div className="max-w-screen-2xl mx-auto">
@@ -11,7 +14,7 @@ const Header = () => {
             <HeaderLogo href="/" />
             <Navigation />
           </div>
-          <AuthButtons />
+          {isLoggedIn && <AuthButtons />}
         </div>
       </div>
     </header>

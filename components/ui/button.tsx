@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         signIn:
-          "bg-gradient-to-r from-blue-500 to-green-500 text-primary-foreground shadow hover:from-blue-600 hover:to-green-600 transition-all duration-500 ease-in-out",
+          "bg-gradient-to-r from-blue-500 to-blue-300 text-primary-foreground shadow hover:from-blue-600 hover:to-blue-400 transition-all duration-500 ease-in-out",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         destructiveGhost:
