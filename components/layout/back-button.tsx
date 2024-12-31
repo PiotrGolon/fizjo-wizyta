@@ -26,7 +26,7 @@ const BackButton = ({ href }: { href: string }) => {
         >
           {isPageRoute || pathname === "/" ? (
             <>
-              Panel użytkownika <LogIn className="size-5 ml-1" />
+              Panel admina <LogIn className="size-5 ml-1" />
             </>
           ) : (
             <>

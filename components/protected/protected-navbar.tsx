@@ -1,40 +1,40 @@
 "use client";
 import HeaderLogo from "../layout/header-logo";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 import BackButton from "../layout/back-button";
 import { useMedia } from "react-use";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
-import { LockKeyhole, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import { DashboardIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+// import { DashboardIcon } from "@radix-ui/react-icons";
+// import Link from "next/link";
 import { protectedRoutes, adminRoutes } from "@/assets/constants";
 
-const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+// const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
 const ProtectedNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const { user } = useUser();
+  // const { user } = useUser();
 
   const isMobile = useMedia("(max-width: 1024px)", false);
 
-  const isAdmin = user?.emailAddresses.some(
-    (email) => email.emailAddress === adminEmail
-  );
+  // const isAdmin = user?.emailAddresses.some(
+  //   (email) => email.emailAddress === adminEmail
+  // );
 
   const isAdminDashboard = pathname?.includes("/admin");
 
   const routes = isAdminDashboard ? adminRoutes : protectedRoutes;
 
-  const pagesRoutesPrefixes = ["/dashboard/admin"];
+  // const pagesRoutesPrefixes = ["/dashboard/admin"];
 
-  const isPageRoute = pagesRoutesPrefixes.some((prefix) =>
-    pathname.startsWith(prefix)
-  );
+  // const isPageRoute = pagesRoutesPrefixes.some((prefix) =>
+  //   pathname.startsWith(prefix)
+  // );
 
   const onClick = (href: string) => {
     router.push(href);
@@ -76,7 +76,7 @@ const ProtectedNavbar = () => {
         <HeaderLogo href="/dashboard" />
       )}
       <div className="flex items-center gap-x-2">
-        {isAdmin && (
+        {/* {isAdmin && (
           <Link href={isAdminDashboard ? "/dashboard" : "/dashboard/admin"}>
             <Button
               variant="ghost"
@@ -94,7 +94,7 @@ const ProtectedNavbar = () => {
               )}
             </Button>
           </Link>
-        )}
+        )} */}
         <BackButton href="/" />
         <UserButton
           appearance={{ elements: { userButtonAvatarBox: "size-14" } }}
