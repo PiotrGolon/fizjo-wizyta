@@ -41,15 +41,15 @@ export default async function AdminDashboardPage() {
   return (
     <>
       <div>
-        <h1 className="flex justify-center text-green-600 mt-4 text-3xl lg:text-4xl xl:text-5xl font-semibold mb-6">
+        <h1 className="flex justify-center text-blue-600 mt-4 text-3xl lg:text-4xl xl:text-5xl font-semibold mb-6">
           Panel Admina
         </h1>
         <div className="flex justify-between items-center mx-2">
-          <h2 className="text-lg text-green-600 font-semibold">
+          <h2 className="text-lg text-blue-600 font-semibold">
             Dodaj nowy rodzaj wizyty
           </h2>
           <Button
-            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+            className="bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300"
             asChild
           >
             <Link href="/dashboard/admin/nowa-wizyta">
@@ -67,8 +67,8 @@ export default async function AdminDashboardPage() {
         </div>
       ) : (
         <div className="flex flex-col items-center gap-4">
-          <CalendarRange className="size-16 mx-auto text-green-600" />
-          <span className="mx-10 text-center text-green-700">
+          <CalendarRange className="size-16 mx-auto text-blue-600" />
+          <span className="mx-10 text-center text-blue-700">
             {" "}
             Nie masz jeszcze stworzonego rodzaju wizyty, na które mogliby się
             zapisywać twoi klienci. Kliknij w przycisk &quot;Nowy rodzaj
@@ -76,7 +76,7 @@ export default async function AdminDashboardPage() {
           </span>
           <Button
             size="lg"
-            className="text-lg bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300"
+            className="text-lg bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300"
             asChild
           >
             <Link href="/dashboard/admin/nowa-wizyta">
@@ -110,7 +110,7 @@ function EventCard({
   return (
     <Card
       className={cn(
-        "flex flex-col mx-2 bg-gray-100 mt-4 text-green-600",
+        "flex flex-col mx-2 bg-gray-100 mt-4 text-blue-600",
         !isActive && "border-secondary/50"
       )}
     >
@@ -135,7 +135,7 @@ function EventCard({
         )}
         <Button
           asChild
-          className="bg-green-600 hover:bg-green-500 hover:opacity-95"
+          className="bg-blue-600 hover:bg-blue-500 hover:opacity-95"
         >
           <Link href={`/dashboard/admin/${id}/edit`}>Edytuj</Link>
         </Button>

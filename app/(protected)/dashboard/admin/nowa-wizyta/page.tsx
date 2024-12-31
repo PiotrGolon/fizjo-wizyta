@@ -5,7 +5,7 @@ export default function NowaWizytaPage() {
   return (
     <Card className="max-w-screen-2xl mt-4 mx-4 bg-gray-100 shadow-lg">
       <CardHeader>
-        <CardTitle className="text-green-700 text-xl">
+        <CardTitle className="text-blue-700 text-xl">
           Dodaj nowy rodzaj wizyty
         </CardTitle>
       </CardHeader>

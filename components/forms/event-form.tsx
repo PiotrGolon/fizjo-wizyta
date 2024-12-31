@@ -83,11 +83,11 @@ export function EventForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-green-600">Nazwa wizyty</FormLabel>
+              <FormLabel className="text-blue-600">Nazwa wizyty</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
-              <FormDescription className="text-green-700">
+              <FormDescription className="text-blue-700">
                 Nazwa wizyty będzie widoczna w trakcie rezerwowania
               </FormDescription>
               <FormMessage />
@@ -99,13 +99,13 @@ export function EventForm({
           name="durationInMinutes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-green-600">
+              <FormLabel className="text-blue-600">
                 Czas trwania wizyty
               </FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>
-              <FormDescription className="text-green-700">
+              <FormDescription className="text-blue-700">
                 W minutach
               </FormDescription>
               <FormMessage />
@@ -117,13 +117,13 @@ export function EventForm({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-green-600">
+              <FormLabel className="text-blue-600">
                 Dodatkowe informacje
               </FormLabel>
               <FormControl>
                 <Textarea className="resize-none h-32" {...field} />
               </FormControl>
-              <FormDescription className="text-green-700">
+              <FormDescription className="text-blue-700">
                 Opcjonalne informacje na temat wizyty
               </FormDescription>
               <FormMessage />
@@ -142,9 +142,9 @@ export function EventForm({
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel className="text-green-600">Aktywna</FormLabel>
+                <FormLabel className="text-blue-600">Aktywna</FormLabel>
               </div>
-              <FormDescription className="text-green-700">
+              <FormDescription className="text-blue-700">
                 Opcjonalne informacje na temat wizyty
               </FormDescription>
               <FormMessage />
@@ -197,7 +197,7 @@ export function EventForm({
 
           <Button
             disabled={isDeletePending || form.formState.isSubmitting}
-            className="text-green-700 hover:text-green-800 duration-300 w-full md:w-auto"
+            className="text-blue-700 hover:text-blue-800 duration-300 w-full md:w-auto"
             type="button"
             asChild
             variant="outline"
@@ -205,7 +205,7 @@ export function EventForm({
             <Link href="/dashboard/admin">Anuluj</Link>
           </Button>
           <Button
-            className="bg-green-600 hover:bg-green-500 hover:opacity-95 duration-300 w-full md:w-auto"
+            className="bg-blue-600 hover:bg-blue-500 hover:opacity-95 duration-300 w-full md:w-auto"
             disabled={isDeletePending || form.formState.isSubmitting}
             type="submit"
           >

@@ -96,7 +96,7 @@ export function ScheduleDateForm({
           </div>
         )}
         {successMessage && (
-          <div className="text-green-500 text-sm">{successMessage}</div>
+          <div className="text-blue-500 text-sm">{successMessage}</div>
         )}
 
         {/* Pole "timezone" */}
@@ -105,7 +105,7 @@ export function ScheduleDateForm({
           name="timezone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Timezone</FormLabel>
+              <FormLabel className="text-blue-600">Timezone</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -137,7 +137,7 @@ export function ScheduleDateForm({
               name={`dateAvailabilities.${index}.date`}
               render={({ field }) => (
                 <FormItem className="flex flex-col w-full md:w-auto justify-between">
-                  <FormLabel className="text-green-600 py-1 mt-1">
+                  <FormLabel className="text-blue-600 py-1 mt-1">
                     Data
                   </FormLabel>
                   <FormControl>
@@ -154,7 +154,7 @@ export function ScheduleDateForm({
               name={`dateAvailabilities.${index}.startTime`}
               render={({ field }) => (
                 <FormItem className="w-full md:w-auto">
-                  <FormLabel className="text-green-500">Start</FormLabel>
+                  <FormLabel className="text-blue-500">Start</FormLabel>
                   <FormControl>
                     <Input
                       className="w-full md:w-24"
@@ -172,7 +172,7 @@ export function ScheduleDateForm({
               name={`dateAvailabilities.${index}.endTime`}
               render={({ field }) => (
                 <FormItem className="w-full md:w-auto">
-                  <FormLabel className="text-green-500">Koniec</FormLabel>
+                  <FormLabel className="text-blue-500">Koniec</FormLabel>
                   <FormControl>
                     <Input
                       className="w-full md:w-24"
@@ -210,7 +210,7 @@ export function ScheduleDateForm({
         {/* Przycisk Zapisz */}
         <div className="flex justify-end">
           <Button
-            className="bg-green-600 hover:bg-green-500"
+            className="bg-blue-600 hover:bg-blue-500"
             disabled={form.formState.isSubmitting}
             type="submit"
           >

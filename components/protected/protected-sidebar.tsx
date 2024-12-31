@@ -27,14 +27,12 @@ const ProtectedSidebar = () => {
               variant={route.href === pathname ? "secondary" : "ghost"}
               onClick={() => onClick(route.href)}
               className={cn(
-                "w-full justify-start shadow-lg hover:bg-green-500/10",
-                isActive ? "border-b-2 border-green-600" : ""
+                "w-full justify-start shadow-lg hover:bg-blue-500/10",
+                isActive ? "border-b-2 border-blue-600" : ""
               )}
             >
-              <route.icon className="size-5 text-green-600 mr-2" />
-              <span className="text-green-600 font-semibold">
-                {route.label}
-              </span>
+              <route.icon className="size-5 text-blue-600 mr-2" />
+              <span className="text-blue-600 font-semibold">{route.label}</span>
             </Button>
           );
         })}

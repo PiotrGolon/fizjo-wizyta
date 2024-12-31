@@ -27,7 +27,7 @@ export default async function SchedulePage() {
   });
 
   return (
-    <Card className="max-w-screen-2xl mt-4 mx-4 bg-gray-100 shadow-lg text-green-600">
+    <Card className="max-w-screen-2xl mt-4 mx-4 bg-gray-100 shadow-lg text-blue-600">
       <CardHeader>
         <CardTitle className="text-2xl">Dodaj dostępność</CardTitle>
       </CardHeader>
