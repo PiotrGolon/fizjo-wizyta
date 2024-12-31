@@ -17,7 +17,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { X, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { formatTimezoneOffset } from "@/lib/formatters";
+import { DatePicker } from "../date-picker";
 
 /**
  * Definiujemy typy formularza
@@ -97,40 +106,61 @@ export function ScheduleDateForm({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Timezone</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {Intl.supportedValuesOf("timeZone").map((timezone) => (
+                    <SelectItem key={timezone} value={timezone}>
+                      {timezone}
+                      {` (${formatTimezoneOffset(timezone)})`}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
         />
-
         {/* Pola do definiowania dat i przedziałów czasowych */}
         {fields.map((field, index) => (
-          <div key={field.id} className="flex gap-4 items-center">
+          <div
+            key={field.id}
+            className="flex flex-col md:flex-row gap-x-4 items-center"
+          >
             {/* Data */}
             <FormField
               control={form.control}
               name={`dateAvailabilities.${index}.date`}
               render={({ field }) => (
-                <FormItem className="w-[160px]">
-                  <FormLabel>Data</FormLabel>
+                <FormItem className="flex flex-col w-full md:w-auto justify-between">
+                  <FormLabel className="text-green-600 py-1 mt-1">
+                    Data
+                  </FormLabel>
                   <FormControl>
-                    <Input type="date" {...field} />
+                    <DatePicker value={field.value} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             {/* Start time */}
             <FormField
               control={form.control}
               name={`dateAvailabilities.${index}.startTime`}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Start</FormLabel>
+                <FormItem className="w-full md:w-auto">
+                  <FormLabel className="text-green-500">Start</FormLabel>
                   <FormControl>
-                    <Input type="time" {...field} />
+                    <Input
+                      className="w-full md:w-24"
+                      aria-label={`Start Time`}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -141,10 +171,14 @@ export function ScheduleDateForm({
               control={form.control}
               name={`dateAvailabilities.${index}.endTime`}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Koniec</FormLabel>
+                <FormItem className="w-full md:w-auto">
+                  <FormLabel className="text-green-500">Koniec</FormLabel>
                   <FormControl>
-                    <Input type="time" {...field} />
+                    <Input
+                      className="w-full md:w-24"
+                      aria-label={`Start Time`}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -152,12 +186,12 @@ export function ScheduleDateForm({
             />
 
             <Button
-              variant="destructiveGhost"
+              variant="destructive"
               type="button"
               onClick={() => removeDateSlot(index)}
-              className="self-end mb-1"
+              className="self-end mt-2 w-full md:w-auto"
             >
-              <X size={16} />
+              Usuń
             </Button>
           </div>
         ))}
@@ -165,7 +199,9 @@ export function ScheduleDateForm({
         <Button
           variant="outline"
           type="button"
-          onClick={() => addDateSlot({ date: "", startTime: "", endTime: "" })}
+          onClick={() =>
+            addDateSlot({ date: "", startTime: "9:00", endTime: "17:00" })
+          }
         >
           <Plus size={16} className="mr-1" />
           Dodaj kolejną datę

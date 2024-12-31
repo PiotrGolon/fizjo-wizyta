@@ -29,6 +29,7 @@ import { CalendarIcon } from "lucide-react";
 import {
   formatDate,
   formatTimeString,
+  formatTimezoneOffset,
   // formatTimezoneOffset,
 } from "@/lib/formatters";
 import { Calendar } from "../ui/calendar";
@@ -82,6 +83,31 @@ export function MeetingForm({
             {form.formState.errors.root.message}
           </div>
         )}
+        <FormField
+          control={form.control}
+          name="timezone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-green-600">Timezone</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {Intl.supportedValuesOf("timeZone").map((timezone) => (
+                    <SelectItem key={timezone} value={timezone}>
+                      {timezone}
+                      {` (${formatTimezoneOffset(timezone)})`}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <div className="flex gap-4 flex-col md:flex-row">
           <FormField

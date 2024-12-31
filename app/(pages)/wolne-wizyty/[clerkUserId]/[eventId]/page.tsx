@@ -33,7 +33,7 @@ export default async function ClerkUserEventPage({
 
   const startDate = new Date();
   startDate.setMinutes(0, 0, 0);
-  const endDate = endOfDay(addDays(startDate, 6));
+  const endDate = endOfDay(addDays(startDate, 30));
 
   const validTimes = await getValidTimesFromSchedule(
     eachMinuteOfInterval({ start: startDate, end: endDate }, { step: 60 }),
